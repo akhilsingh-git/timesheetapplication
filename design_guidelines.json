@@ -1,0 +1,189 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "Timesheet Pro",
+      "persona": "E1: The Anti-AI Designer",
+      "archetype": "Swiss & High-Contrast",
+      "vibe": "Clinical Precision, Objective, Functional",
+      "principles": [
+        "Fusion over Imitation: Mix Swiss Poster aesthetics with Spreadsheet utility.",
+        "Content is King: The data grid is the hero. Everything else recedes.",
+        "Contrast: Stark black text on white. No muddy grays.",
+        "Negative Space: Dense grid, but spacious surroundings."
+      ]
+    },
+    "typography": {
+      "fonts": {
+        "heading": {
+          "family": "Manrope",
+          "weights": ["600", "800"],
+          "usage": "Page titles, Section headers, Modal titles",
+          "fallback": "sans-serif"
+        },
+        "body": {
+          "family": "Inter",
+          "weights": ["400", "500"],
+          "usage": "Labels, Navigation, Button text",
+          "fallback": "sans-serif"
+        },
+        "mono": {
+          "family": "JetBrains Mono",
+          "weights": ["400", "500"],
+          "usage": "Timesheet grid inputs, Totals, Dates, IDs",
+          "fallback": "monospace"
+        }
+      },
+      "scale": {
+        "h1": "text-4xl font-extrabold tracking-tight lg:text-5xl",
+        "h2": "text-3xl font-bold tracking-tight",
+        "h3": "text-2xl font-semibold tracking-tight",
+        "p": "leading-7 [&:not(:first-child)]:mt-6",
+        "small": "text-sm font-medium leading-none",
+        "muted": "text-sm text-muted-foreground"
+      }
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "default": "#2563EB",
+          "foreground": "#FFFFFF",
+          "hover": "#1D4ED8",
+          "description": "Royal Blue. Use for primary actions (Save, Submit) and active states."
+        },
+        "background": {
+          "default": "#FFFFFF",
+          "subtle": "#F8FAFC",
+          "description": "Pure white for main surfaces. Very light slate for page background."
+        },
+        "surface": {
+          "card": "#FFFFFF",
+          "popover": "#FFFFFF",
+          "border": "#E2E8F0"
+        },
+        "text": {
+          "primary": "#0F172A",
+          "secondary": "#64748B",
+          "muted": "#94A3B8"
+        },
+        "status": {
+          "success": "#10B981",
+          "warning": "#F59E0B",
+          "error": "#EF4444",
+          "info": "#3B82F6"
+        }
+      },
+      "gradients": {
+        "forbidden": true,
+        "exception": "None. Flat colors only for maximum clarity."
+      }
+    },
+    "layout": {
+      "grid_system": {
+        "dashboard": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+        "timesheet": "grid-cols-[250px_repeat(7,1fr)_100px] gap-0 border-collapse",
+        "description": "Dashboard uses 'Bento' Mode B (High Density). Timesheet uses a custom 'Data Lattice' layout."
+      },
+      "spacing": {
+        "container_padding": "p-6 md:p-10",
+        "section_gap": "gap-8",
+        "component_gap": "gap-4"
+      },
+      "containers": {
+        "max_width": "max-w-7xl mx-auto",
+        "card_style": "rounded-xl border bg-card text-card-foreground shadow-sm"
+      }
+    },
+    "components": {
+      "buttons": {
+        "style": "rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+        "variants": {
+          "default": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
+          "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "ghost": "hover:bg-accent hover:text-accent-foreground",
+          "link": "text-primary underline-offset-4 hover:underline"
+        }
+      },
+      "inputs": {
+        "style": "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "grid_variant": "border-transparent hover:border-input focus:border-primary bg-transparent h-full w-full rounded-none text-center font-mono"
+      },
+      "cards": {
+        "style": "rounded-xl border bg-card text-card-foreground shadow-sm"
+      }
+    },
+    "visual_enhancers": {
+      "micro_interactions": {
+        "hover_lift": "hover:-translate-y-0.5 transition-transform duration-200",
+        "focus_ring": "focus:ring-2 focus:ring-primary/20 focus:border-primary",
+        "row_highlight": "hover:bg-slate-50 transition-colors duration-150"
+      },
+      "textures": {
+        "noise": "opacity-[0.015] pointer-events-none fixed inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"
+      },
+      "shadows": {
+        "soft": "shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+        "sharp": "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+      }
+    },
+    "assets": {
+      "icons": {
+        "library": "lucide-react",
+        "style": "stroke-width={1.5} size={18}"
+      },
+      "images": [
+        {
+          "category": "user_avatar",
+          "url": "https://images.unsplash.com/photo-1589220286904-3dcef62c68ee?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "description": "Professional woman avatar for profile"
+        },
+        {
+          "category": "team_member_1",
+          "url": "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg",
+          "description": "Team member avatar"
+        },
+        {
+          "category": "team_member_2",
+          "url": "https://images.unsplash.com/photo-1575299833801-85ce40813bac?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "description": "Team member avatar"
+        }
+      ]
+    },
+    "accessibility": {
+      "contrast": "Ensure 4.5:1 for normal text. Use Slate-900 for body text on white.",
+      "focus": "All interactive elements must have visible focus states.",
+      "aria": "Use aria-label for icon-only buttons. Use role='grid' for the timesheet."
+    }
+  },
+  "instructions_to_main_agent": {
+    "general": [
+      "Implement the 'Swiss & High-Contrast' theme. Strict white background, black text, blue accents.",
+      "Use 'Manrope' for all headings and 'JetBrains Mono' for the timesheet grid data.",
+      "The Timesheet Grid is the core feature. It must feel like a high-performance spreadsheet.",
+      "Do NOT use gradients. Use solid colors and subtle borders.",
+      "Ensure the layout is responsive. On mobile, the grid might need to stack or scroll horizontally."
+    ],
+    "specific_pages": {
+      "dashboard": "Use a Bento Grid layout (Mode B). Show 'Total Hours', 'Pending Approvals', and 'Project Distribution'.",
+      "timesheet_entry": "A dense table. Rows = Projects/Tasks. Columns = Mon-Sun + Total. Use 'ghost' inputs that reveal borders on hover.",
+      "login": "Simple, centered card on a very light slate background. Minimalist."
+    },
+    "component_overrides": {
+      "Table": "Remove default padding for the timesheet grid to make it dense. Use 'h-10' for rows.",
+      "Input": "Create a 'ghost' variant for grid entry that looks like plain text until focused."
+    }
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts. Use grids and asymmetry.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) ONLY for sticky headers/modals.",
+    "You MUST NOT apply universal transition. Eg: 'transition: all'.",
+    "You MUST NOT center align the app container.",
+    "Always use modern button styles (pill or sharp).",
+    "NEVER use AI assistant Emoji characters.",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable (except in the data grid).",
+    "Use 'sonner' for toasts."
+  ]
+}
