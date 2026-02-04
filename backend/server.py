@@ -216,6 +216,7 @@ async def get_projects(current_user: User = Depends(get_current_user)):
     results = []
     for p in projects:
         p['id'] = str(p['_id'])
+        del p['_id']  # Remove the ObjectId field
         results.append(Project(**p))
     return results
 
