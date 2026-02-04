@@ -233,7 +233,13 @@ async def create_project(project: Project, current_user: User = Depends(get_curr
     }
     new_p = await db.projects.insert_one(p_dict)
     
-    return Project(id=str(new_p.inserted_id), **p_dict)
+    # Create response object explicitly
+    return Project(
+        id=str(new_p.inserted_id),
+        name=p_dict["name"],
+        code=p_dict["code"],
+        sub_projects=[SubProject(**sp) for sp in p_dict["sub_projects"]]
+    )
 
 # TIMESHEETS
 @api_router.get("/timesheets/week", response_model=Optional[Timesheet])
