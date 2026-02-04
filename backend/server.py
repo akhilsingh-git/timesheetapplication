@@ -227,7 +227,7 @@ async def get_projects(current_user: User = Depends(get_current_user)):
         results.append(Project(**p))
     return results
 
-@api_router.post("/projects", response_model=Project)
+@api_router.post("/projects")
 async def create_project(project: Project, current_user: User = Depends(get_current_user)):
     if current_user.role not in ['Admin', 'Manager']:
         raise HTTPException(status_code=403, detail="Not authorized")
@@ -240,13 +240,13 @@ async def create_project(project: Project, current_user: User = Depends(get_curr
     }
     new_p = await db.projects.insert_one(p_dict)
     
-    # Create response object explicitly
-    return Project(
-        id=str(new_p.inserted_id),
-        name=p_dict["name"],
-        code=p_dict["code"],
-        sub_projects=[SubProject(**sp) for sp in p_dict["sub_projects"]]
-    )
+    # Return response dict manually
+    return {
+        "id": str(new_p.inserted_id),
+        "name": p_dict["name"],
+        "code": p_dict["code"],
+        "sub_projects": p_dict["sub_projects"]
+    }
 
 # TIMESHEETS
 @api_router.get("/timesheets/week", response_model=Optional[Timesheet])
