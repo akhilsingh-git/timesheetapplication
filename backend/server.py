@@ -165,7 +165,7 @@ async def root():
     return {"message": "Timesheet API Running"}
 
 # AUTH
-@api_router.post("/auth/login", response_model=Token)
+@api_router.post("/auth/login")
 async def login(form_data: dict = Body(...)):
     email = form_data.get("email")
     password = form_data.get("password")
@@ -176,10 +176,14 @@ async def login(form_data: dict = Body(...)):
     
     # Fix ID for response
     user_id = str(user['_id'])
-    # Create user response without _id field
-    user_data = {k: v for k, v in user.items() if k not in ['_id', 'password']}
-    user_data['id'] = user_id
-    user_resp = User(**user_data)
+    # Create user response manually to avoid alias issues
+    user_resp = {
+        "id": user_id,
+        "email": user["email"],
+        "full_name": user["full_name"],
+        "role": user["role"],
+        "reports_to": user.get("reports_to")
+    }
     
     access_token = create_access_token(data={"sub": user['email'], "role": user['role'], "id": user_id})
     return {"access_token": access_token, "token_type": "bearer", "user": user_resp}
