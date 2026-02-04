@@ -3,6 +3,7 @@ import AppLayout from "./components/AppLayout";
 import Login from "./pages/Login";
 import TimesheetPage from "./pages/TimesheetPage";
 import ApprovalsPage from "./pages/ApprovalsPage";
+import AdminPage from "./pages/AdminPage";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
 function PrivateRoute({ children }) {
@@ -23,7 +24,7 @@ function AppRoutes() {
       }>
         <Route index element={<TimesheetPage />} />
         <Route path="approvals" element={<ApprovalsPage />} />
-        <Route path="admin" element={<div>Admin Panel (Coming Soon)</div>} />
+        <Route path="admin" element={<AdminPage />} />
       </Route>
     </Routes>
   );
