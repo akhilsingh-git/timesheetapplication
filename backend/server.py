@@ -246,6 +246,7 @@ async def get_timesheet_by_week(week_start: str, user_id: Optional[str] = None, 
     
     if ts:
         ts['id'] = str(ts['_id'])
+        del ts['_id']  # Remove the ObjectId field
         return Timesheet(**ts)
     return None
 
