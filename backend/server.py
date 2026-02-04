@@ -225,10 +225,12 @@ async def create_project(project: Project, current_user: User = Depends(get_curr
     if current_user.role not in ['Admin', 'Manager']:
         raise HTTPException(status_code=403, detail="Not authorized")
     
-    p_dict = project.model_dump(by_alias=True, exclude={"id"})
-    # Remove _id if it exists
-    if '_id' in p_dict:
-        del p_dict['_id']
+    # Create dict without id field
+    p_dict = {
+        "name": project.name,
+        "code": project.code,
+        "sub_projects": [sp.model_dump() for sp in project.sub_projects]
+    }
     new_p = await db.projects.insert_one(p_dict)
     
     return Project(id=str(new_p.inserted_id), **p_dict)
