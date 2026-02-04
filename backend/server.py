@@ -176,7 +176,10 @@ async def login(form_data: dict = Body(...)):
     
     # Fix ID for response
     user_id = str(user['_id'])
-    user_resp = User(**{k: v for k, v in user.items() if k != '_id'}, id=user_id)
+    # Create user response without _id field
+    user_data = {k: v for k, v in user.items() if k not in ['_id', 'password']}
+    user_data['id'] = user_id
+    user_resp = User(**user_data)
     
     access_token = create_access_token(data={"sub": user['email'], "role": user['role'], "id": user_id})
     return {"access_token": access_token, "token_type": "bearer", "user": user_resp}
