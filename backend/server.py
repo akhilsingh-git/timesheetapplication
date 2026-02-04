@@ -307,12 +307,20 @@ async def save_timesheet(timesheet: Timesheet, current_user: User = Depends(get_
             {"_id": existing['_id']},
             {"$set": ts_dict}
         )
-        return Timesheet(id=str(existing['_id']), **ts_dict)
+        # Return response dict manually
+        return {
+            "id": str(existing['_id']),
+            **ts_dict
+        }
     else:
         ts_dict['audit_trail'] = [audit_entry]
         ts_dict['status'] = "Draft"
         new_ts = await db.timesheets.insert_one(ts_dict)
-        return Timesheet(id=str(new_ts.inserted_id), **ts_dict)
+        # Return response dict manually
+        return {
+            "id": str(new_ts.inserted_id),
+            **ts_dict
+        }
 
 @api_router.post("/timesheets/{ts_id}/submit")
 async def submit_timesheet(ts_id: str, current_user: User = Depends(get_current_user)):
