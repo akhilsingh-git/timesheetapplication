@@ -226,6 +226,9 @@ async def create_project(project: Project, current_user: User = Depends(get_curr
         raise HTTPException(status_code=403, detail="Not authorized")
     
     p_dict = project.model_dump(by_alias=True, exclude={"id"})
+    # Remove _id if it exists
+    if '_id' in p_dict:
+        del p_dict['_id']
     new_p = await db.projects.insert_one(p_dict)
     
     return Project(id=str(new_p.inserted_id), **p_dict)
