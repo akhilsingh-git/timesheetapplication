@@ -265,7 +265,7 @@ async def get_timesheet_by_week(week_start: str, user_id: Optional[str] = None, 
         return Timesheet(**ts)
     return None
 
-@api_router.post("/timesheets", response_model=Timesheet)
+@api_router.post("/timesheets")
 async def save_timesheet(timesheet: Timesheet, current_user: User = Depends(get_current_user)):
     # Logic: Upsert
     # Check if locked
